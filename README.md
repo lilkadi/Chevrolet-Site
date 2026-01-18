@@ -42,7 +42,6 @@ button{cursor:pointer}
 .cartBtn{position:fixed;bottom:20px;right:20px;background:#000;color:#fff;border-radius:50%;padding:15px;font-size:20px;z-index:1000;}
 #cartBox{display:none;position:fixed;bottom:80px;right:20px;background:#000;color:#fff;border:2px solid #fff;border-radius:10px;width:300px;max-height:400px;overflow:auto;padding:10px;}
 #cartBox button#placeOrderBtn{width:100%;padding:10px;margin-top:10px;background:#ffd700;color:#000;border:none;border-radius:5px;cursor:pointer;}
-#adminBox{display:none;padding:10px;border:2px solid #000;margin:10px;border-radius:10px}
 #loginBtnTop{display:inline-block;padding:10px 20px;margin-top:10px;background:#ffd700;color:#000;border:none;border-radius:5px;cursor:pointer;}
 #loginModal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);display:flex;align-items:center;justify-content:center;z-index:2000;}
 #loginModal div{background:#000;color:#fff;padding:20px;border-radius:10px;text-align:center;min-width:300px;}
@@ -63,15 +62,15 @@ button{cursor:pointer}
 <div class="banner-cars">
   <img src="https://cdn.salla.sa/mQpGy/dd06a5fb-2e9b-4f97-87be-c76dfdf02190-1000x1000-UiKRN84uJnxNI4O2A0mcIHD5lIcoIvmywG7AJ7vx.jpg" class="active">
   <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJn8zvfImPaKGVK4ZJIrrIPTdLMjMfIEpf1GQMGQiJpI6J_JAlhapRTwc6&s=10">
+  <img src="https://images.netdirector.co.uk/gforces-auto/image/upload/w_412,h_309,q_auto:best,c_fill,f_auto,fl_lossy/auto-client/d418a4d2f88732d056860e0a37947119/traverse_1920x640.jpg">
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqwAx7NbfzcZJiTikZruvGMM5ZwVOyeD4T6tiEPa1OsJSjTNtpeYDuRk7V&s=10">
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoCakHSez2g2j27WncCQ5DUMaM2VWUsQqsRyhb1AwZrJa-75FQsstc3zQ&s=10">
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToA66OnCB295OmKol0CZJ4EoboIPsd1FOWRXykXCcdA&s=10">
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqvq0VHNraiYFApwMtwvUcsAth_OLRTYccJGE4NH-OU4CM40NWMdJ9bk8&s=10">
 </div>
 
 <button id="searchBtn" onclick="toggleSearch()">🔍 بحث عن قطعة</button>
 <input id="searchInput" placeholder="اكتب اسم القطعة" onkeyup="searchProducts()">
-
-<div id="adminBox">
-<h3>إدارة الموقع</h3>
-<p>تم تفعيل الربط مع Google Sheets تلقائيًا</p>
-</div>
 
 <div class="product-grid" id="products"></div>
 
@@ -102,13 +101,9 @@ button{cursor:pointer}
 </div>
 
 <script>
-let products=[], cart=[], admin=false;
+let products=[], cart=[];
 const list=document.getElementById("products");
 
-// رابط Google Sheets API
-const API_URL = "https://api.sheetbest.com/sheets/673dfe58-aa8a-4ec6-8b65-59cf1064ab39";
-
-// شريط الصور
 const bannerImages=document.querySelectorAll(".banner-cars img");
 let current=0;
 setInterval(()=>{
@@ -117,134 +112,127 @@ setInterval(()=>{
   bannerImages[current].classList.add("active");
 },3000);
 
-// فتح نموذج الدخول
 function showLogin(){ document.getElementById("loginModal").style.display="flex"; }
-
-// تسجيل الدخول
 function login(){
   if(u.value==="admin" && c.value==="1" && p.value==="1234"){
-    admin=true; document.getElementById("adminBox").style.display="block";
     alert("تم تسجيل الدخول بنجاح");
   } else alert("خطأ في اسم المستخدم أو الرمز أو كلمة المرور");
   document.getElementById("loginModal").style.display="none";
 }
-
-// البحث
 function toggleSearch(){ 
   const input = document.getElementById("searchInput");
   input.style.display = input.style.display==="block"?"none":"block"; 
 }
 
-// جلب المنتجات من Google Sheets
-window.onload = async function(){
-  await loadProducts();
-  loadCart();
-}
+/* =========================
+   قراءة المنتجات من SheetBest
+========================= */
+const apiURL = "https://api.sheetbest.com/sheets/044c3d5a-80e6-42eb-87cc-488eba7900aa";
 
-async function loadProducts(){
-  const res = await fetch(API_URL);
-  products = await res.json();
-  renderProducts();
-}
+fetch(apiURL)
+  .then(res => res.json())
+  .then(data => {
+    products = data.map(item => ({
+      name: item['اسم المادة'] || item['name'] || "بدون اسم",
+      price: item['البيع'] || item['price'] || 0
+    }));
+    renderProducts();
+  })
+  .catch(err => console.error(err));
 
-// عرض المنتجات
 function renderProducts(filteredProducts){
-  const data = filteredProducts || products;
-  list.innerHTML = "";
-  data.forEach((prod, idx)=>{
-    const div = document.createElement("div");
-    div.className = "product";
-    div.innerHTML = `
-      <h4>${prod.name}</h4>
-      <div class="price">${prod.price} $</div>
-      <div>${prod.note || ""}</div>
-      <div class="qty">
-        <button class="dec" onclick="changeQty(${idx},-1)">-</button>
-        <span id="qty${idx}">1</span>
-        <button class="inc" onclick="changeQty(${idx},1)">+</button>
-      </div>
-      <a href="#" class="whatsappBtnProduct" onclick="addToCart(${idx})">أضف للطلب</a>
-      <a href="#" class="whatsappBtnProduct inquiry" onclick="sendInquiry('${prod.name}', ${prod.price})">استفسار عن القطعة</a>
-    `;
-    list.appendChild(div);
-  });
+    const data = filteredProducts || products;
+    list.innerHTML = "";
+    data.forEach((prod, idx)=>{
+        const div = document.createElement("div");
+        div.className = "product";
+        div.innerHTML = `
+            <h4>${prod.name}</h4>
+            <div class="price">${prod.price} $</div>
+            <div class="qty">
+                <button class="dec" onclick="changeQty(${idx},-1)">-</button>
+                <span id="qty${idx}">1</span>
+                <button class="inc" onclick="changeQty(${idx},1)">+</button>
+            </div>
+            <a href="#" class="whatsappBtnProduct" onclick="addToCart(${idx})">أضف للطلب</a>
+            <a href="#" class="whatsappBtnProduct inquiry" onclick="sendInquiry('${prod.name}', ${prod.price})">استفسار عن القطعة</a>
+        `;
+        list.appendChild(div);
+    });
 }
 
-// البحث
 function searchProducts(){
-  const term = document.getElementById("searchInput").value.toLowerCase();
-  const filtered = products.filter(p=>p.name.toLowerCase().includes(term));
-  renderProducts(filtered);
+    const term = document.getElementById("searchInput").value.toLowerCase();
+    const filtered = products.filter(p=>p.name.toLowerCase().includes(term));
+    renderProducts(filtered);
 }
 
-// كمية المنتج
 function changeQty(idx, val){
-  const qtyEl = document.getElementById(`qty${idx}`);
-  let qty = parseInt(qtyEl.innerText);
-  qty += val;
-  if(qty < 1) qty = 1;
-  qtyEl.innerText = qty;
+    const qtyEl = document.getElementById(`qty${idx}`);
+    let qty = parseInt(qtyEl.innerText);
+    qty += val;
+    if(qty < 1) qty = 1;
+    qtyEl.innerText = qty;
 }
 
-// السلة
 function addToCart(idx){
-  const qty = parseInt(document.getElementById(`qty${idx}`).innerText);
-  const prod = {...products[idx], qty};
-  const existing = cart.find(c => c.name === prod.name);
-  if(existing) existing.qty += qty;
-  else cart.push(prod);
-  updateCart();
+    const qty = parseInt(document.getElementById(`qty${idx}`).innerText);
+    const prod = {...products[idx], qty};
+    const existing = cart.find(c => c.name === prod.name);
+    if(existing) existing.qty += qty;
+    else cart.push(prod);
+    updateCart();
 }
 
 function updateCart(){
-  const cartItems = document.getElementById("cartItems");
-  cartItems.innerHTML = "";
-  let total = 0;
-  cart.forEach(item=>{
-    const div = document.createElement("div");
-    div.innerHTML = `${item.name} x ${item.qty} = ${item.price*item.qty} $ <button onclick="removeCart('${item.name}')">حذف</button>`;
-    cartItems.appendChild(div);
-    total += item.price*item.qty;
-  });
-  document.getElementById("total").innerText = total;
-  document.getElementById("cartCount").innerText = cart.reduce((a,b)=>a+b.qty,0);
+    const cartItems = document.getElementById("cartItems");
+    cartItems.innerHTML = "";
+    let total = 0;
+    cart.forEach(item=>{
+        const div = document.createElement("div");
+        div.innerHTML = `${item.name} x ${item.qty} = ${item.price*item.qty} $ <button onclick="removeCart('${item.name}')">حذف</button>`;
+        cartItems.appendChild(div);
+        total += item.price*item.qty;
+    });
+    document.getElementById("total").innerText = total;
+    document.getElementById("cartCount").innerText = cart.reduce((a,b)=>a+b.qty,0);
 }
 
 function removeCart(name){
-  cart = cart.filter(c=>c.name!==name);
-  updateCart();
+    cart = cart.filter(c=>c.name!==name);
+    updateCart();
 }
 
 function toggleCart(){
-  const box = document.getElementById("cartBox");
-  box.style.display = box.style.display==="block"?"none":"block";
+    const box = document.getElementById("cartBox");
+    box.style.display = box.style.display==="block"?"none":"block";
 }
 
 function showOrderBox(){ document.getElementById("orderBox").style.display="block"; }
 
-// إرسال الطلب للواتساب
 function sendOrder(){
-  const name = document.getElementById("custName").value;
-  const phone = document.getElementById("custPhone").value;
-  const address = document.getElementById("custAddress").value;
-  if(!name || !phone || !address){ alert("ادخل الاسم، رقم الهاتف، والعنوان"); return; }
+    const name = document.getElementById("custName").value;
+    const phone = document.getElementById("custPhone").value;
+    const address = document.getElementById("custAddress").value;
+    if(!name || !phone || !address){ alert("ادخل الاسم، رقم الهاتف، والعنوان"); return; }
 
-  let msg = `طلبية جديدة: الزبون: ${name} رقم الهاتف: ${phone} العنوان: ${address} الطلب: `;
-  let total = 0;
+    let msg = `طلبية جديدة: الزبون: ${name} رقم الهاتف: ${phone} العنوان: ${address} الطلب: `;
 
-  cart.forEach(item=>{
-    const itemTotal = item.price * item.qty;
-    msg += `${item.name} - ${item.qty} × ${item.price} = ${itemTotal} $; `;
-    total += itemTotal;
-  });
+    let total = 0;
+    cart.forEach(item=>{
+        const itemTotal = item.price * item.qty;
+        msg += `${item.name} - ${item.qty} × ${item.price} = ${itemTotal} $; `;
+        total += itemTotal;
+    });
 
-  msg += `المجموع: ${total}$`;
-  window.open(`https://wa.me/9647872159504?text=${encodeURIComponent(msg)}`);
+    msg += `المجموع: ${total}$ راح نراسلك لتحديد السعر مع التوصيل.`;
+
+    window.open(`https://wa.me/9647872159504?text=${encodeURIComponent(msg)}`);
 }
 
 function sendInquiry(productName, productPrice){
-  const msg = `لدي استفسار عن القطعة: اسم القطعة: ${productName} السعر: ${productPrice} $`;
-  window.open(`https://wa.me/9647872159504?text=${encodeURIComponent(msg)}`);
+    const msg = `لدي استفسار عن القطعة: اسم القطعة: ${productName} السعر: ${productPrice} $`;
+    window.open(`https://wa.me/9647872159504?text=${encodeURIComponent(msg)}`);
 }
 </script>
 
