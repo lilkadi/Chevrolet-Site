@@ -6,72 +6,20 @@
 <title>Chevrolet Site</title>
 
 <style>
-:root{
-  --black:#000;
-  --yellow:#ffd700;
-  --white:#fff;
-  --gray:#f2f2f2;
-  --darkGray:#111;
-}
-
+:root{--black:#000;--yellow:#ffd700;--white:#fff;--gray:#f2f2f2;--darkGray:#111}
 *{box-sizing:border-box}
-body{
-  margin:0;
-  font-family:tahoma;
-  background:#000;
-  color:#fff;
-  user-select:none;
-}
-
-/* ====== Center page for mobile & laptop ====== */
-.page{
-  min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-}
-.main{
-  width:100%;
-  max-width:430px;
-  padding:0 15px;
-}
-@media(min-width:768px){
-  .main{max-width:1100px;}
-}
-
+body{margin:0;font-family:tahoma;background:#000;color:#fff;user-select:none}
+.page{min-height:100vh;display:flex;justify-content:center;align-items:center}
+.main{width:100%;max-width:430px;padding:0 15px}
+@media(min-width:768px){.main{max-width:1100px}}
 /* كل النوافذ مخفية افتراضياً */
 .cartModal,.orderModal,#productModal,#categoryModal,#loginModal{display:none}
 
 /* Header */
-header{
-  background:var(--black);
-  color:var(--yellow);
-  padding:15px 20px;
-  position:sticky;
-  top:0;
-  z-index:1000;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-header h2{
-  margin:0;
-  font-size:22px;
-  letter-spacing:2px;
-}
-header .btns{
-  display:flex;
-  gap:10px;
-}
-header button{
-  background:var(--yellow);
-  color:var(--black);
-  border:none;
-  padding:10px 12px;
-  border-radius:10px;
-  font-weight:700;
-  cursor:pointer;
-}
+header{background:var(--black);color:var(--yellow);padding:15px 20px;position:sticky;top:0;z-index:1000;display:flex;justify-content:space-between;align-items:center}
+header h2{margin:0;font-size:22px;letter-spacing:2px}
+header .btns{display:flex;gap:10px}
+header button{background:var(--yellow);color:var(--black);border:none;padding:10px 12px;border-radius:10px;font-weight:700;cursor:pointer}
 
 /* تصميم جميل للصفحة */
 .container{
@@ -99,9 +47,9 @@ header button{
   top:0;
   left:0;
   transition:opacity 1s ease;
-  opacity:0;
+  opacity:0
 }
-.banner-cars img.active{opacity:1;}
+.banner-cars img.active{opacity:1}
 
 .searchBar{
   display:flex;
@@ -111,33 +59,9 @@ header button{
   flex-wrap:wrap;
   width:100%;
 }
-#searchInput{
-  width:100%;
-  max-width:520px;
-  padding:12px;
-  border-radius:12px;
-  border:2px solid var(--yellow);
-  background:#111;
-  color:#fff;
-  font-size:16px;
-}
-#searchBtn,#catBtn{
-  padding:12px 20px;
-  border:none;
-  border-radius:12px;
-  background:var(--yellow);
-  color:#000;
-  font-weight:700;
-  cursor:pointer;
-}
-#carSelect{
-  padding:12px;
-  border-radius:12px;
-  border:2px solid var(--yellow);
-  background:#111;
-  color:#fff;
-  font-size:16px;
-}
+#searchInput{width:100%;max-width:520px;padding:12px;border-radius:12px;border:2px solid var(--yellow);background:#111;color:#fff;font-size:16px}
+#searchBtn,#catBtn{padding:12px 20px;border:none;border-radius:12px;background:var(--yellow);color:#000;font-weight:700;cursor:pointer}
+#carSelect{padding:12px;border-radius:12px;border:2px solid var(--yellow);background:#111;color:#fff;font-size:16px}
 
 .product-grid{
   display:grid;
@@ -145,80 +69,24 @@ header button{
   gap:18px;
   width:100%;
 }
-@media(max-width:768px){
-  .product-grid{grid-template-columns:repeat(1,1fr);}
-}
+@media(max-width:768px){.product-grid{grid-template-columns:repeat(1,1fr)}}
 
 .product{
-  background:#fff;
-  color:#000;
-  border-radius:15px;
-  padding:12px;
+  background:#fff;color:#000;border-radius:15px;padding:12px;
   box-shadow:0 8px 20px rgba(0,0,0,.25);
   cursor:pointer;
 }
-.product img{
-  width:100%;
-  height:160px;
-  object-fit:cover;
-  border-radius:12px;
-}
-.product h4{
-  margin:10px 0 5px 0;
-  font-size:18px;
-  font-weight:800;
-}
-.product .price{
-  color:#ff6600;
-  font-weight:900;
-  margin:5px 0;
-  font-size:18px;
-}
-.qty{
-  display:flex;
-  justify-content:center;
-  gap:8px;
-  margin:10px 0;
-}
-.qty button{
-  width:36px;
-  height:36px;
-  border:none;
-  border-radius:8px;
-  font-size:18px;
-  font-weight:700;
-}
+.product img{width:100%;height:160px;object-fit:cover;border-radius:12px}
+.product h4{margin:10px 0 5px 0;font-size:18px;font-weight:800}
+.product .price{color:#ff6600;font-weight:900;margin:5px 0;font-size:18px}
+.qty{display:flex;justify-content:center;gap:8px;margin:10px 0}
+.qty button{width:36px;height:36px;border:none;border-radius:8px;font-size:18px;font-weight:700}
 .inc{background:var(--yellow)}
 .dec{background:#ff3b3b;color:#fff}
+.whatsappBtnProduct{display:block;margin:10px auto 0 auto;background:#25D366;color:#fff;border-radius:10px;padding:10px 12px;text-align:center;text-decoration:none;width:100%;font-size:14px;font-weight:700}
 
-.whatsappBtnProduct{
-  display:block;
-  margin:10px auto 0 auto;
-  background:#25D366;
-  color:#fff;
-  border-radius:10px;
-  padding:10px 12px;
-  text-align:center;
-  text-decoration:none;
-  width:100%;
-  font-size:14px;
-  font-weight:700;
-}
-
-#backHome{
-  display:none;
-  text-align:center;
-  margin:15px 0;
-}
-#backHome button{
-  padding:10px 15px;
-  border:none;
-  border-radius:12px;
-  background:var(--yellow);
-  color:#000;
-  font-weight:800;
-  cursor:pointer;
-}
+#backHome{display:none;text-align:center;margin:15px 0}
+#backHome button{padding:10px 15px;border:none;border-radius:12px;background:var(--yellow);color:#000;font-weight:800;cursor:pointer}
 
 /* زر السلة */
 .cartBtn{
@@ -231,7 +99,7 @@ header button{
   padding:16px;
   font-size:22px;
   z-index:1000;
-  box-shadow:0 8px 20px rgba(0,0,0,.4);
+  box-shadow:0 8px 20px rgba(0,0,0,.4)
 }
 #cartCount{font-weight:900;margin-left:8px}
 
@@ -240,332 +108,212 @@ header button{
   position:fixed;top:0;left:0;width:100%;height:100%;
   background:rgba(0,0,0,0.8);
   display:flex;align-items:center;justify-content:center;
-  z-index:1500;
+  z-index:1500
 }
 .cartModalContent{
   width:90%;max-width:520px;background:#000;color:#fff;border:2px solid var(--yellow);
   border-radius:20px;padding:20px;position:relative;
-  box-shadow:0 20px 60px rgba(0,0,0,.7);
+  box-shadow:0 20px 60px rgba(0,0,0,.7)
 }
 .cartModalContent h2{text-align:center;margin:0;font-size:22px}
 .cartModalContent .closeCart{position:absolute;top:15px;right:15px;font-size:30px;color:var(--yellow);cursor:pointer}
 .cartItems{margin-top:15px;max-height:320px;overflow:auto}
 .cartItem{
   display:flex;gap:10px;background:#111;border:1px solid rgba(255,215,0,.25);
-  border-radius:15px;padding:10px;margin-bottom:12px;align-items:center;
+  border-radius:15px;padding:10px;margin-bottom:12px;align-items:center
 }
-.cartItem img{
-  width:70px;height:70px;object-fit:cover;border-radius:12px;border:2px solid var(--yellow);
-}
+.cartItem img{width:70px;height:70px;object-fit:cover;border-radius:12px;border:2px solid var(--yellow)}
 .cartItem .info{flex:1}
 .cartItem .info h4{margin:0;font-size:15px;font-weight:900}
 .cartItem .info p{margin:5px 0 0 0;color:#ddd;font-size:13px}
 .qtyControl{display:flex;gap:6px;margin-top:8px;justify-content:flex-start}
-.qtyControl button{
-  width:28px;height:28px;border:none;border-radius:8px;font-size:18px;font-weight:800;cursor:pointer;
-}
-.removeBtn{
-  background:#ff3b3b;color:#fff;border:none;padding:8px 10px;border-radius:10px;font-weight:800;cursor:pointer;
-}
-.cart-total{
-  display:flex;
-  justify-content:space-between;
-  margin-top:15px;
-  font-size:18px;
-  font-weight:900;
-}
-.orderBtn{
-  width:100%;
-  padding:12px;
-  margin-top:10px;
-  border:none;
-  border-radius:14px;
-  font-weight:900;
-  cursor:pointer;
-  background:var(--yellow);
-  color:#000;
-}
+.qtyControl button{width:28px;height:28px;border:none;border-radius:8px;font-size:18px;font-weight:800;cursor:pointer}
+.removeBtn{background:#ff3b3b;color:#fff;border:none;padding:8px 10px;border-radius:10px;font-weight:800;cursor:pointer}
+.cart-total{display:flex;justify-content:space-between;margin-top:15px;font-size:18px;font-weight:900}
+.orderBtn{width:100%;padding:12px;margin-top:10px;border:none;border-radius:14px;font-weight:900;cursor:pointer;background:var(--yellow);color:#000}
 
 /* طلب */
 .orderModal{
   position:fixed;top:0;left:0;width:100%;height:100%;
   background:rgba(0,0,0,0.75);
   display:flex;justify-content:center;align-items:center;
-  z-index:2000;
+  z-index:2000
 }
 .orderModalContent{
   width:90%;max-width:420px;background:#000;color:#fff;border:2px solid var(--yellow);
-  border-radius:20px;padding:20px;text-align:center;position:relative;
+  border-radius:20px;padding:20px;text-align:center;position:relative
 }
-.orderModalContent input{
-  width:100%;
-  padding:12px;
-  margin:10px 0;
-  border-radius:12px;
-  border:2px solid var(--yellow);
-  background:#111;
-  color:#fff;
-}
-.orderModalContent button{
-  width:100%;
-  padding:12px;
-  margin-top:10px;
-  border:none;
-  border-radius:12px;
-  background:var(--yellow);
-  color:#000;
-  font-weight:900;
-  cursor:pointer;
-}
-.closeOrder{
-  position:absolute;top:18px;right:18px;
-  font-size:28px;color:var(--yellow);cursor:pointer;
-}
+.orderModalContent input{width:100%;padding:12px;margin:10px 0;border-radius:12px;border:2px solid var(--yellow);background:#111;color:#fff}
+.orderModalContent button{width:100%;padding:12px;margin-top:10px;border:none;border-radius:12px;background:var(--yellow);color:#000;font-weight:900;cursor:pointer}
+.closeOrder{position:absolute;top:18px;right:18px;font-size:28px;color:var(--yellow);cursor:pointer}
 
 /* Modal المنتج */
 #productModal{
   position:fixed;top:0;left:0;width:100%;height:100%;
   background:rgba(0,0,0,0.8);
   z-index:3000;
-  display:flex;align-items:center;justify-content:center;
+  display:flex;align-items:center;justify-content:center
 }
 #productModal .modalContent{
-  width:95%;max-width:1100px;background:#fff;border-radius:15px;overflow:hidden;direction:rtl;
+  width:95%;max-width:1100px;background:#fff;border-radius:15px;overflow:hidden;direction:rtl
 }
 #productModal .modalHeader{
   background:var(--black);color:var(--yellow);
-  padding:12px 15px;display:flex;justify-content:space-between;align-items:center;
+  padding:12px 15px;display:flex;justify-content:space-between;align-items:center
 }
-#productModal .modalHeader button{
-  background:var(--yellow);color:#000;border:none;border-radius:10px;padding:10px 14px;
-}
+#productModal .modalHeader button{background:var(--yellow);color:#000;border:none;border-radius:10px;padding:10px 14px}
 #productModal .modalBody{padding:18px}
 
-.product-page{
-  display:grid;
-  grid-template-columns:1.3fr .7fr;
-  gap:20px;
-  align-items:start;
-}
-@media(max-width:768px){
-  .product-page{grid-template-columns:1fr;}
-}
+.product-page{display:grid;grid-template-columns:1.3fr .7fr;gap:20px;align-items:start}
+@media(max-width:768px){.product-page{grid-template-columns:1fr}}
 
-.product-images{
-  background:#fff;border-radius:15px;padding:15px;box-shadow:0 5px 15px rgba(0,0,0,.15);
-}
-.main-img{
-  width:100%;
-  height:420px;border-radius:12px;object-fit:cover;
-}
-.thumbs{
-  margin-top:10px;
-  display:flex;
-  gap:10px;
-  overflow-x:auto;
-}
-.thumbs img{
-  width:120px;height:80px;border-radius:10px;object-fit:cover;cursor:pointer;border:2px solid transparent;
-}
-.thumbs img.active{border-color:var(--yellow);}
+.product-images{background:#fff;border-radius:15px;padding:15px;box-shadow:0 5px 15px rgba(0,0,0,.15)}
+.main-img{width:100%;height:420px;border-radius:12px;object-fit:cover}
+.thumbs{margin-top:10px;display:flex;gap:10px;overflow-x:auto}
+.thumbs img{width:120px;height:80px;border-radius:10px;object-fit:cover;cursor:pointer;border:2px solid transparent}
+.thumbs img.active{border-color:var(--yellow)}
 
-.product-details{
-  background:#fff;border-radius:15px;padding:20px;box-shadow:0 5px 15px rgba(0,0,0,.15);
-}
-.product-title{
-  font-size:24px;font-weight:900;margin:0 0 10px 0;
-}
-.product-price{
-  font-size:24px;color:#ff6600;font-weight:900;margin:10px 0;
-}
-.product-desc{
-  font-size:14px;line-height:1.6;color:#555;margin-top:10px;
-}
-.btns{
-  display:flex;gap:10px;margin-top:15px;
-}
-.btn{
-  flex:1;
-  padding:14px 20px;
-  border:none;
-  border-radius:12px;
-  cursor:pointer;
-  font-size:16px;
-  font-weight:700;
-  transition:transform .2s ease,box-shadow .2s ease;
-  box-shadow:0 6px 15px rgba(0,0,0,.2);
-}
-.btn.cart{background:var(--yellow);color:#000;}
-.btn.whatsapp{background:#25D366;color:#fff;}
-.btn:hover{transform:translateY(-2px);box-shadow:0 10px 20px rgba(0,0,0,.25);}
+.product-details{background:#fff;border-radius:15px;padding:20px;box-shadow:0 5px 15px rgba(0,0,0,.15)}
+.product-title{font-size:24px;font-weight:900;margin:0 0 10px 0}
+.product-price{font-size:24px;color:#ff6600;font-weight:900;margin:10px 0}
+.product-desc{font-size:14px;line-height:1.6;color:#555;margin-top:10px}
+.btns{display:flex;gap:10px;margin-top:15px}
+.btn{flex:1;padding:14px 20px;border:none;border-radius:12px;cursor:pointer;font-size:16px;font-weight:700;transition:transform .2s ease,box-shadow .2s ease;box-shadow:0 6px 15px rgba(0,0,0,.2)}
+.btn.cart{background:var(--yellow);color:#000}
+.btn.whatsapp{background:#25D366;color:#fff}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 20px rgba(0,0,0,.25)}
+.specs{margin-top:20px;border-top:1px solid #eee;padding-top:15px}
+.specs h3{margin:0 0 10px;font-size:18px}
+.specs ul{list-style:none;padding:0;margin:0}
+.specs ul li{padding:8px 0;border-bottom:1px dashed #ddd;color:#555}
 
-.specs{
-  margin-top:20px;
-  border-top:1px solid #eee;
-  padding-top:15px;
-}
-.specs h3{margin:0 0 10px;font-size:18px;}
-.specs ul{list-style:none;padding:0;margin:0;}
-.specs ul li{padding:8px 0;border-bottom:1px dashed #ddd;color:#555;}
+.warranty{display:none;margin-top:15px;border:2px solid var(--yellow);background:#fff;color:#000;border-radius:12px;padding:12px 14px}
+.warranty h3{margin:0 0 8px 0;font-size:18px;color:#ff6600}
+.warranty ul{margin:0;padding-left:18px}
+.warranty ul li{margin:6px 0}
+.warranty p{margin:6px 0;font-size:14px}
 
-.warranty{
-  display:none;
-  margin-top:15px;
-  border:2px solid var(--yellow);
-  background:#fff;
-  color:#000;
-  border-radius:12px;
-  padding:12px 14px;
-}
-.warranty h3{
-  margin:0 0 8px 0;
-  font-size:18px;
-  color:#ff6600;
-}
-.warranty ul{margin:0;padding-left:18px;}
-.warranty ul li{margin:6px 0;}
-.warranty p{margin:6px 0;font-size:14px;}
-
-/* ===== تصغير لوحة Admin ===== */
-.adminBar{
-  margin-top:15px;
-  background:#000;
-  color:var(--yellow);
-  padding:10px;
-  border-radius:10px;
-  display:none;
-  max-width:360px;
-  font-size:13px;
-}
-.adminBar h3{
-  font-size:15px;
-  margin:0 0 8px 0;
-}
-.adminBar input,.adminBar textarea,.adminBar select{
-  width:100%;
-  padding:8px;
-  margin:5px 0;
-  border-radius:8px;
-  border:1px solid #ddd;
-}
-.adminBar button{
-  padding:10px 15px;
-  background:var(--yellow);
-  color:#000;
-  border:none;
-  border-radius:8px;
-  cursor:pointer;
-  font-weight:700;
-}
-#copyResults{
-  max-height:150px;
-  overflow:auto;
-  border:1px solid #ddd;
-  padding:10px;
-  border-radius:10px;
-  background:#111;
-}
-#copyResults div{
-  padding:8px;
-  border-bottom:1px solid #333;
-  cursor:pointer;
-  color:#fff;
-}
-#copyResults div.selected{
-  background:#ffd700;
-  color:#000;
-}
+.adminBar{margin-top:15px;background:#000;color:var(--yellow);padding:10px;border-radius:10px;display:none}
+.adminBar input,.adminBar textarea,.adminBar select{width:100%;padding:8px;margin:5px 0;border-radius:8px;border:1px solid #ddd}
+.adminBar button{padding:10px 15px;background:var(--yellow);color:#000;border:none;border-radius:8px;cursor:pointer;font-weight:700}
+#copyResults{max-height:150px;overflow:auto;border:1px solid #ddd;padding:10px;border-radius:10px;background:#111}
+#copyResults div{padding:8px;border-bottom:1px solid #333;cursor:pointer;color:#fff}
+#copyResults div.selected{background:#ffd700;color:#000}
 
 /* التصنيفات */
 .categoryModal{
   position:fixed;top:0;left:0;width:100%;height:100%;
   background:rgba(0,0,0,0.85);
   z-index:2500;
-  display:flex;justify-content:center;align-items:center;
+  display:flex;justify-content:center;align-items:center
 }
 .categoryModalContent{
   width:95%;max-width:700px;background:#000;border:2px solid var(--yellow);
-  border-radius:20px;padding:20px;color:#fff;position:relative;
+  border-radius:20px;padding:20px;color:#fff;position:relative
 }
-.categoryModalContent h2{text-align:center;margin:0 0 15px 0;}
-.closeCategory{
-  position:absolute;top:15px;left:15px;
-  background:var(--yellow);
-  color:#000;
-  border:none;
-  padding:10px 12px;
-  border-radius:10px;
-  font-weight:700;
-  cursor:pointer;
+.categoryModalContent h2{text-align:center;margin:0 0 15px 0}
+.closeCategory{position:absolute;top:15px;left:15px;background:var(--yellow);color:#000;border:none;padding:10px 12px;border-radius:10px;font-weight:700;cursor:pointer}
+.categoryGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}
+@media(max-width:768px){.categoryGrid{grid-template-columns:repeat(1,1fr)}}
+.categoryCard{background:rgba(255,255,255,0.05);border-radius:12px;border:1px solid #333;padding:12px 10px;text-align:center;cursor:pointer}
+.categoryCard img{width:100%;height:110px;object-fit:contain;margin-bottom:8px}
+.categoryCard .ar{font-size:14px;font-weight:bold;color:var(--yellow)}
+.categoryCard .en{font-size:13px;color:#fff;direction:ltr}
+#editCatBtn{display:none;margin-bottom:15px;background:var(--yellow);color:#000;border:none;padding:10px 12px;border-radius:10px;font-weight:700;cursor:pointer}
+.editPanel{display:none;margin-top:15px;background:rgba(255,255,255,0.05);padding:15px;border-radius:12px;border:1px solid #333}
+.editPanel input{width:100%;padding:10px;margin:8px 0;border-radius:10px;border:1px solid #333;background:rgba(0,0,0,0.3);color:#fff}
+.editPanel button{padding:10px 12px;border:none;border-radius:10px;font-weight:700;cursor:pointer;margin-top:10px}
+
+/* ===== تحسين التناسب للشاشة الصغيرة ===== */
+@media (max-width: 480px) {
+
+  .banner-cars {
+    height: 200px;
+    border-radius: 12px;
+  }
+
+  .banner-cars img {
+    height: 200px;
+  }
+
+  .searchBar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  #searchInput, #carSelect, #searchBtn, #catBtn {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .product-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .product img {
+    height: 160px;
+  }
+
+  .product h4 {
+    font-size: 16px;
+  }
+
+  .price {
+    font-size: 16px;
+  }
+
+  .cartModalContent {
+    width: 95%;
+    padding: 15px;
+  }
+
+  .cartItem img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .product-page {
+    grid-template-columns: 1fr;
+  }
+
+  .main-img {
+    height: 260px;
+  }
+
+  .thumbs img {
+    width: 90px;
+    height: 60px;
+  }
+
+  .product-title {
+    font-size: 20px;
+  }
+
+  .product-price {
+    font-size: 20px;
+  }
+
+  .btn {
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  .adminBar {
+    max-width: 360px;
+    margin: 10px auto;
+    padding: 10px;
+    font-size: 12px;
+  }
+
+  .adminBar input,
+  .adminBar textarea {
+    font-size: 12px;
+  }
 }
-.categoryGrid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:15px;
-}
-@media(max-width:768px){
-  .categoryGrid{grid-template-columns:repeat(1,1fr);}
-}
-.categoryCard{
-  background:rgba(255,255,255,0.05);
-  border-radius:12px;
-  border:1px solid #333;
-  padding:12px 10px;
-  text-align:center;
-  cursor:pointer;
-}
-.categoryCard img{
-  width:100%;
-  height:110px;
-  object-fit:contain;
-  margin-bottom:8px;
-}
-.categoryCard .ar{
-  font-size:14px;
-  font-weight:bold;
-  color:var(--yellow);
-}
-.categoryCard .en{
-  font-size:13px;
-  color:#fff;
-  direction:ltr;
-}
-#editCatBtn{
-  display:none;
-  margin-bottom:15px;
-  background:var(--yellow);
-  color:#000;
-  border:none;
-  padding:10px 12px;
-  border-radius:10px;
-  font-weight:700;
-  cursor:pointer;
-}
-.editPanel{
-  display:none;
-  margin-top:15px;
-  background:rgba(255,255,255,0.05);
-  padding:15px;
-  border-radius:12px;
-  border:1px solid #333;
-}
-.editPanel input{
-  width:100%;
-  padding:10px;
-  margin:8px 0;
-  border-radius:10px;
-  border:1px solid #333;
-  background:rgba(0,0,0,0.3);
-  color:#fff;
-}
-.editPanel button{
-  padding:10px 12px;
-  border:none;
-  border-radius:10px;
-  font-weight:700;
-  cursor:pointer;
-  margin-top:10px;
-}
+
+/* منع النسخ + F12 */
+body{ -webkit-user-select:none; -moz-user-select:none; -ms-user-select:none; user-select:none;}
 </style>
 
 <script>
@@ -582,7 +330,7 @@ document.addEventListener("keydown",e=>{
   <div class="btns">
     <button onclick="openCategories()">التصنيفات</button>
     <button id="wazeBtn" onclick="openAddress()">عنواننا</button>
-    <!-- زر Admin -->
+    <!-- زر Admin تم إضافته -->
     <button id="adminBtn" onclick="showLogin()">Admin</button>
     <button onclick="toggleTheme()">🌙/☀️</button>
   </div>
@@ -748,22 +496,13 @@ document.addEventListener("keydown",e=>{
 </div>
 
 <script>
-let products=[],cart=[];
-let selectedProductIndex=null;
+let products=[],cart=[];let selectedProductIndex=null;
+const adminUser="lilkadi1",adminPass="19961996lilkadi",adminCode="1";
 
-const adminUser="lilkadi1";
-const adminPass="19961996lilkadi";
+function isAdmin(){return localStorage.getItem("isAdmin")==="true"}
 
-function isAdmin(){
-  return localStorage.getItem("isAdmin")==="true";
-}
-
-function showLogin(){
-  document.getElementById("loginModal").style.display="block";
-}
-function closeLogin(){
-  document.getElementById("loginModal").style.display="none";
-}
+function showLogin(){document.getElementById("loginModal").style.display="block"}
+function closeLogin(){document.getElementById("loginModal").style.display="none"}
 
 function login(){
   const u=document.getElementById("username").value;
@@ -773,9 +512,7 @@ function login(){
     document.getElementById("loginModal").style.display="none";
     alert("تم الدخول");
     showAdminBar();
-  }else{
-    alert("خطأ في البيانات");
-  }
+  }else alert("خطأ");
 }
 
 function toggleTheme(){
@@ -787,24 +524,16 @@ let current=0;
 setInterval(()=>{
   bannerImages.forEach(i=>i.classList.remove("active"));
   current=(current+1)%bannerImages.length;
-  bannerImages[current].classList.add("active");
+  bannerImages[current].classList.add("active")
 },3000);
 
 const list=document.getElementById("products");
 const carSelect=document.getElementById("carSelect");
-
-// API XLSX (sheetbest)
 const apiURL="https://api.sheetbest.com/sheets/044c3d5a-80e6-42eb-87cc-488eba7900aa";
 
 fetch(apiURL).then(r=>r.json()).then(data=>{
   const cars=[...new Set(data.map(x=>(x['السيارة']||x['car']||"").trim()).filter(x=>x))];
-  cars.forEach(c=>{
-    const opt=document.createElement("option");
-    opt.value=c;
-    opt.textContent=c;
-    carSelect.appendChild(opt);
-  });
-
+  cars.forEach(c=>{const opt=document.createElement("option");opt.value=c;opt.textContent=c;carSelect.appendChild(opt)});
   products=data.map((item,index)=>({
     id:index+1,
     car:item['السيارة']||item['car']||"غير محدد",
@@ -817,9 +546,7 @@ fetch(apiURL).then(r=>r.json()).then(data=>{
     qty:1,
     category:item['التصنيف']||"غير مصنف"
   }));
-
-  renderProducts();
-  showAdminBar();
+  renderProducts();showAdminBar();
 }).catch(err=>console.error(err));
 
 function renderProducts(filtered){
@@ -852,74 +579,19 @@ function searchProducts(){
 }
 
 function filterByCar(){searchProducts()}
-function changeQty(id,val){
-  const p=products.find(x=>x.id===id);
-  p.qty+=val;
-  if(p.qty<1)p.qty=1;
-  document.getElementById(`qty${id}`).innerText=p.qty;
-}
-
-function addToCart(id){
-  const p=products.find(x=>x.id===id);
-  const ex=cart.find(x=>x.id===p.id);
-  if(ex)ex.qty+=p.qty;
-  else cart.push({...p});
-  updateCart();
-}
-
-function updateCart(){
-  const box=document.getElementById("cartItems");
-  box.innerHTML="";
-  let total=0;
-  cart.forEach(item=>{
-    const div=document.createElement("div");
-    div.className="cartItem";
-    div.innerHTML=`
-      <img src="${item.imgs[0]}">
-      <div class="info">
-        <h4>${item.name}</h4>
-        <p>${item.price} $ لكل وحدة</p>
-        <div class="qtyControl">
-          <button class="dec" onclick="changeCartQty(${item.id},-1)">-</button>
-          <span>${item.qty}</span>
-          <button class="inc" onclick="changeCartQty(${item.id},1)">+</button>
-        </div>
-      </div>
-      <button class="removeBtn" onclick="removeCart(${item.id})">حذف</button>
-    `;
-    box.appendChild(div);
-    total+=item.price*item.qty;
-  });
-  document.getElementById("cartTotal").innerText=total;
-  document.getElementById("cartCount").innerText=cart.reduce((a,b)=>a+b.qty,0);
-}
-
-function changeCartQty(id,val){
-  const item=cart.find(x=>x.id===id);
-  item.qty+=val;
-  if(item.qty<1)item.qty=1;
-  updateCart();
-}
+function changeQty(id,val){const p=products.find(x=>x.id===id);p.qty+=val;if(p.qty<1)p.qty=1;document.getElementById(`qty${id}`).innerText=p.qty}
+function addToCart(id){const p=products.find(x=>x.id===id);const ex=cart.find(x=>x.id===p.id);if(ex)ex.qty+=p.qty;else cart.push({...p});updateCart()}
+function updateCart(){const box=document.getElementById("cartItems");box.innerHTML="";let total=0;cart.forEach(item=>{const div=document.createElement("div");div.className="cartItem";div.innerHTML=`<img src="${item.imgs[0]}"><div class="info"><h4>${item.name}</h4><p>${item.price} $ لكل وحدة</p><div class="qtyControl"><button class="dec" onclick="changeCartQty(${item.id},-1)">-</button><span>${item.qty}</span><button class="inc" onclick="changeCartQty(${item.id},1)">+</button></div></div><button class="removeBtn" onclick="removeCart(${item.id})">حذف</button>`;box.appendChild(div);total+=item.price*item.qty});document.getElementById("cartTotal").innerText=total;document.getElementById("cartCount").innerText=cart.reduce((a,b)=>a+b.qty,0)}
+function changeCartQty(id,val){const item=cart.find(x=>x.id===id);item.qty+=val;if(item.qty<1)item.qty=1;updateCart()}
 function removeCart(id){cart=cart.filter(x=>x.id!==id);updateCart()}
-function toggleCart(){
-  const m=document.getElementById("cartModal");
-  m.style.display=m.style.display==="flex"?"none":"flex";
-  if(m.style.display==="flex")updateCart();
-}
-function showOrderBox(){
-  document.getElementById("cartModal").style.display="none";
-  document.getElementById("orderModal").style.display="flex";
-}
+function toggleCart(){const m=document.getElementById("cartModal");m.style.display=m.style.display==="flex"?"none":"flex";if(m.style.display==="flex")updateCart()}
+function showOrderBox(){document.getElementById("cartModal").style.display="none";document.getElementById("orderModal").style.display="flex"}
 function closeOrderModal(){document.getElementById("orderModal").style.display="none"}
-
 function sendOrder(){
   const name=document.getElementById("custName").value;
   const phone=document.getElementById("custPhone").value;
   const address=document.getElementById("custAddress").value;
-  if(!name||!phone||!address){
-    alert("ادخل الاسم، رقم الهاتف، والعنوان");
-    return;
-  }
+  if(!name||!phone||!address){alert("ادخل الاسم، رقم الهاتف، والعنوان");return}
 
   let msg=`طلبية جديدة:\nالزبون: ${name}\nرقم الهاتف: ${phone}\nالعنوان: ${address}\n\nالقطع:\n`;
   let total=0;
@@ -982,27 +654,11 @@ function openProduct(id){
 }
 
 function closeProduct(){document.getElementById("productModal").style.display="none"}
-function changeImg(el){
-  document.getElementById("mainImg").src=el.src;
-  document.querySelectorAll(".thumbs img").forEach(i=>i.classList.remove("active"));
-  el.classList.add("active");
-}
-function addToCartFromModal(){
-  const p=products[selectedProductIndex];
-  const ex=cart.find(x=>x.id===p.id);
-  if(ex)ex.qty+=p.qty;
-  else cart.push({...p});
-  updateCart();
-  alert("تم إضافة المنتج للسلة");
-}
-function sendWhatsApp(){
-  const msg="أريد أطلب هذا المنتج: "+document.getElementById("prodTitle").innerText;
-  window.open(`https://wa.me/9647872159504?text=${encodeURIComponent(msg)}`);
-}
+function changeImg(el){document.getElementById("mainImg").src=el.src;document.querySelectorAll(".thumbs img").forEach(i=>i.classList.remove("active"));el.classList.add("active")}
+function addToCartFromModal(){const p=products[selectedProductIndex];const ex=cart.find(x=>x.id===p.id);if(ex)ex.qty+=p.qty;else cart.push({...p});updateCart();alert("تم إضافة المنتج للسلة")}
+function sendWhatsApp(){const msg="أريد أطلب هذا المنتج: "+document.getElementById("prodTitle").innerText;window.open(`https://wa.me/9647872159504?text=${encodeURIComponent(msg)}`)}
 
-function showAdminBar(){
-  document.getElementById("adminBar").style.display=isAdmin()?"block":"none";
-}
+function showAdminBar(){document.getElementById("adminBar").style.display=isAdmin()?"block":"none"}
 
 function saveAdmin(){
   if(selectedProductIndex===null)return;
@@ -1020,7 +676,7 @@ function saveAdmin(){
   p.details=document.getElementById("editDetails").value;
   renderProducts();
   openProduct(p.id);
-  alert("تم حفظ التعديلات");
+  alert("تم حفظ التعديلات")
 }
 
 let copySelected=[];
@@ -1034,9 +690,9 @@ function searchCopyProducts(){
     div.textContent=p.name;
     div.onclick=()=>toggleCopySelect(p.id,div);
     if(copySelected.includes(p.id))div.classList.add("selected");
-    box.appendChild(div);
+    box.appendChild(div)
   });
-  if(results.length===0)box.innerHTML="<div style='color:#aaa;'>لا توجد نتائج</div>";
+  if(results.length===0)box.innerHTML="<div style='color:#aaa;'>لا توجد نتائج</div>"
 }
 function toggleCopySelect(id,el){
   const idx=copySelected.indexOf(id);
@@ -1051,20 +707,11 @@ function copyDescriptionToOthers(){
     if(p)p.desc=desc;
   });
   renderProducts();
-  alert("تم تطبيق الوصف");
+  alert("تم تطبيق الوصف")
 }
 
 /* التصنيفات */
-let categories=[
-  {ar:"التصميم الداخلي",en:"Interior Design",img:"https://cdn-icons-png.flaticon.com/512/3062/3062634.png"},
-  {ar:"مساحات الزجاج",en:"Windshield Wipers",img:"https://cdn-icons-png.flaticon.com/512/1309/1309522.png"},
-  {ar:"الزيوت والسوائل",en:"Oils & Fluids",img:"https://cdn-icons-png.flaticon.com/512/2913/2913894.png"},
-  {ar:"الفلاتر",en:"Filters",img:"https://cdn-icons-png.flaticon.com/512/1605/1605750.png"},
-  {ar:"المكابح",en:"Brakes",img:"https://cdn-icons-png.flaticon.com/512/3059/3059814.png"},
-  {ar:"المحرك",en:"Engine",img:"https://cdn-icons-png.flaticon.com/512/919/919846.png"},
-  {ar:"الكهرباء",en:"Electrical",img:"https://cdn-icons-png.flaticon.com/512/149/149060.png"},
-  {ar:"الإطارات",en:"Tires",img:"https://cdn-icons-png.flaticon.com/512/2976/2976216.png"}
-];
+let categories=[{ar:"التصميم الداخلي",en:"Interior Design",img:"https://cdn-icons-png.flaticon.com/512/3062/3062634.png"},{ar:"مساحات الزجاج",en:"Windshield Wipers",img:"https://cdn-icons-png.flaticon.com/512/1309/1309522.png"},{ar:"الزيوت والسوائل",en:"Oils & Fluids",img:"https://cdn-icons-png.flaticon.com/512/2913/2913894.png"},{ar:"الفلاتر",en:"Filters",img:"https://cdn-icons-png.flaticon.com/512/1605/1605750.png"},{ar:"المكابح",en:"Brakes",img:"https://cdn-icons-png.flaticon.com/512/3059/3059814.png"},{ar:"المحرك",en:"Engine",img:"https://cdn-icons-png.flaticon.com/512/919/919846.png"},{ar:"الكهرباء",en:"Electrical",img:"https://cdn-icons-png.flaticon.com/512/149/149060.png"},{ar:"الإطارات",en:"Tires",img:"https://cdn-icons-png.flaticon.com/512/2976/2976216.png"}];
 
 function saveCategories(){localStorage.setItem("categories",JSON.stringify(categories))}
 function loadCategories(){const s=localStorage.getItem("categories");if(s)categories=JSON.parse(s)}
@@ -1081,15 +728,11 @@ function renderCategories(){
         <div class="en">${c.en}</div>
         <div style="font-size:12px;color:#fff;margin-top:5px;">رقم: ${idx+1}</div>
       </div>
-    `;
-  });
+    `
+  })
 }
 
-function openCategories(){
-  document.getElementById("categoryModal").style.display="flex";
-  renderCategories();
-  checkEditButton();
-}
+function openCategories(){document.getElementById("categoryModal").style.display="flex";renderCategories();checkEditButton()}
 function closeCategories(){document.getElementById("categoryModal").style.display="none"}
 
 function checkEditButton(){
@@ -1112,7 +755,7 @@ function addCategory(){
   categories.push({ar,en,img});
   saveCategories();
   renderCategories();
-  alert("تم إضافة");
+  alert("تم إضافة")
 }
 
 function editCategory(){
@@ -1127,7 +770,7 @@ function editCategory(){
   if(img)categories[idx].img=img;
   saveCategories();
   renderCategories();
-  alert("تم تعديل");
+  alert("تم تعديل")
 }
 
 function deleteCategory(){
@@ -1137,25 +780,25 @@ function deleteCategory(){
   categories.splice(idx,1);
   saveCategories();
   renderCategories();
-  alert("تم حذف");
+  alert("تم حذف")
 }
 
 function filterByCategory(cat){
   const f=products.filter(p=>p.category===cat);
   renderProducts(f);
   closeCategories();
-  document.getElementById("backHome").style.display="block";
+  document.getElementById("backHome").style.display="block"
 }
 
 function backToHome(){
   renderProducts();
-  document.getElementById("backHome").style.display="none";
+  document.getElementById("backHome").style.display="none"
 }
 
 function toggleSearch(){document.getElementById("searchInput").focus()}
 function openAddress(){window.open("https://waze.com/ul/hsyrq48m2z","_blank")}
 
-/* زر Admin دائمًا ظاهر */
+/* Admin secret: show button always */
 document.getElementById("adminBtn").style.display="block";
 
 window.onload=function(){
